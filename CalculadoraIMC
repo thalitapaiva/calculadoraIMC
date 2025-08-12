@@ -1,6 +1,6 @@
-//Aluno: Heitor Rodrigues Meneghetti, Matrícula: 2023200964.
-//Aluno: Heitor Leonardo Costa, Matrícula: 2024203409.
-//Aluno: Thalita Fonseca de Paiva, Matrícula: 2023201396.
+//Aluno: Heitor Rodrigues Meneghetti, MatrÃ­cula: 2023200964.
+//Aluno: Heitor Leonardo Costa, MatrÃ­cula: 2024203409.
+//Aluno: Thalita Fonseca de Paiva, MatrÃ­cula: 2023201396.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +41,7 @@ float calculaIMC(tPessoa registro){
         if (registro.altura > 0 ){
         imc = registro.peso / (registro.altura * registro.altura );
         } else {
-            printf("Não é possível calcular IMC com altura menor ou igual a 0!\n");
+            printf("NÃ£o Ã© possÃ­vel calcular IMC com altura menor ou igual a 0!\n");
             imc = 0.0;
         }
 
