@@ -1,0 +1,68 @@
+//Aluno: Heitor Rodrigues Meneghetti, Matrícula: 2023200964.
+//Aluno: Heitor Leonardo Costa, Matrícula: 2024203409.
+//Aluno: Thalita Fonseca de Paiva, Matrícula: 2023201396.
+
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct _pessoa{
+    char nome[30];
+    int idade;
+    char sexo;
+    float altura;
+    float peso;
+    float imc;
+} tPessoa;
+
+void lePaciente(tPessoa *registro){
+    printf("\nDigite o nome: ");
+    scanf(" %29[^\n]", registro->nome);
+    printf("Digite a idade: ");
+    scanf("%d", &(registro->idade));
+    printf("Digite o sexo (M / F): ");
+    scanf(" %c", &(registro->sexo));
+    printf("Digite a altura: ");
+    scanf("%f", &(registro->altura));
+    printf("Digite a peso: ");
+    scanf("%f", &(registro->peso));
+    registro->imc = 0;
+    printf("\n");
+}
+
+void imprimePaciente(tPessoa registro){
+    printf("+--------------------------------------+-------+\n");
+    printf("| Nome: %30s |  IMC  |\n", registro.nome);
+    printf("| Idade: %3d            Sexo: %c        |       |\n", registro.idade, registro.sexo);
+    printf("| Altura: %4.2f          Peso: %5.1f    |  %4.1f |\n", registro.altura, registro.peso, registro.imc);
+    printf("+--------------------------------------+-------+\n");
+}
+
+float calculaIMC(tPessoa registro){
+    float imc;
+        if (registro.altura > 0 ){
+        imc = registro.peso / (registro.altura * registro.altura );
+        } else {
+            printf("Não é possível calcular IMC com altura menor ou igual a 0!\n");
+            imc = 0.0;
+        }
+
+    return imc;
+}
+
+int main(void) {
+    int nPacientes;
+    printf("\n----------Quantos pacientes deseja registrar?-------\n");
+    scanf("%d", &nPacientes);
+    tPessoa *vet = malloc(nPacientes * sizeof(tPessoa));
+            for (int i=0; i<nPacientes;i++){
+                    lePaciente(&vet[i]);
+             vet[i].imc = calculaIMC(vet[i]);
+
+            }
+            for (int i=0; i<nPacientes;i++){
+                imprimePaciente(vet[i]);
+
+            }
+
+
+    return 0;
+}
